@@ -8,7 +8,7 @@ services:
     env_file:
       - .env
     depends_on:
-      - db-conv
+      - db
   nginx:
     image: nginx:1.21
     container_name: devihor_nginx
@@ -21,10 +21,10 @@ services:
 
     depends_on:
       - app
-  db-conv:
-    image: mysql:8.0.23
+  db:
+    image: mysql:8.0.36
     ports:
-      - 3307:3306
+      - 3306:3306
     restart: always
     volumes:
       - ./docker/mysql/files:/var/lib/mysql
